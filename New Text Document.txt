@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Upload Example</title>
+
+    @*<script src="~/Scripts/jquery-2.1.3.intellisense.js"></script>
+    <script src="~/Scripts/jquery-2.1.3.js"></script>
+    <script src="~/Scripts/jquery-2.1.3.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).delegate("input:file","click", function () {
+                $("#fileup").append('<input type="file" id="FileUpload" multiple />');
+            });
+            $("#Upload").click(function () {
+                var formData = new FormData();
+                var totalFiles = document.getElementById("FileUpload").files.length;
+                for (var i = 0; i < totalFiles; i++) {
+                    var file = document.getElementById("FileUpload").files[i];
+
+                    formData.append("FileUpload", file);
+                }
+                $.ajax({
+                    type: "POST",
+                    url: '/Product/UploadFiles',
+                    data: formData,
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        alert('succes!!');
+                    },
+                    error: function (error) {
+                        alert("errror");
+                    }
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="fileup">
+        <input type="file" id="FileUpload" multiple />
+        <input type="button" id="Upload" value="Upload" />
+    </div>*@
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+    <form action="/upload-target" class="dropzone"></form>
+    </head>
+    <body>
+</body>
+</html>
